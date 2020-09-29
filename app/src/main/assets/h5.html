@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>h5</title>
+</head>
+<body>
+
+<button type="button" onclick="demo()">调用摄像头</button>
+</body>
+</html>
+<script>
+    function demo() {
+        AlipayJSBridge.call('demo', {
+            },
+            function(result) {
+                //alert(result.message);
+            });
+    }
+</script>

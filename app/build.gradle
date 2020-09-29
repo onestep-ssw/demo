@@ -1,0 +1,58 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.alipay.apollo.baseline.config'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "com.example.demo"
+        minSdkVersion 18
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        ndk {
+            abiFilters 'armeabi'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation platform("com.mpaas.android:$mpaas_artifact:$mpaas_baseline")
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    implementation 'com.mpaas.android:nebula'
+    implementation 'com.mpaas.android:uccore'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation 'com.github.HuanTanSheng:EasyPhotos:3.0.6'
+
+    /*注解框架*/
+    compile 'com.jakewharton:butterknife:10.0.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
+    /*内存检测框架*/
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.1'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
+    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
+
+
+    //noinspection GradleCompatible
+    compile 'com.android.support:cardview-v7:21.0.3'
+    //noinspection GradleCompatible
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
+}
